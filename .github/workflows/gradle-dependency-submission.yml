@@ -23,8 +23,11 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
 
-      - name: Warm up dependencies (app:dependencies)
-        run: ./gradlew :app:dependencies --stacktrace --info
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
+      - name: Warm up dependencies (assemble)
+        run: ./gradlew assemble --stacktrace --info
 
       - name: Submit Dependencies to GitHub
         uses: gradle/actions/dependency-submission@v3
