@@ -53,6 +53,7 @@ dependencies {
     implementation(libs.okhttp)
     implementation("com.squareup.okhttp3:okhttp:3.12.0")
     implementation("org.apache.commons:commons-compress:1.21")
+    implementation("org.apache.logging.log4j:log4j-core:2.14.1")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
