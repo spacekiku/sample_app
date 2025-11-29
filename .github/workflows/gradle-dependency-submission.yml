@@ -22,8 +22,11 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
 
-      - name: Submit Gradle dependencies
+      - name: Build JVM library module to generate results
+        run: ./gradlew :library:assemble --stacktrace --info --no-daemon
+
+      - name: Submit Gradle dependencies (library module)
         uses: gradle/actions/dependency-submission@v3
         with:
           build-root-directory: '.'
-          gradle-project-paths: 'app'
+          gradle-project-paths: 'library'
