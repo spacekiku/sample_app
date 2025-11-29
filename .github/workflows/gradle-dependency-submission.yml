@@ -6,7 +6,7 @@ on:
   pull_request:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   submit:
@@ -26,8 +26,8 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
-      - name: Warm up dependencies (assemble)
-        run: ./gradlew assemble --stacktrace --info
+      - name: Warm up dependencies (app:dependencies)
+        run: ./gradlew :app:dependencies --stacktrace --info --no-daemon
 
       - name: Submit Dependencies to GitHub
         uses: gradle/actions/dependency-submission@v3
