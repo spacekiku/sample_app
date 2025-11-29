@@ -19,13 +19,13 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Setup Gradle
+      - name: Setup Gradle (enable dependency graph)
         uses: gradle/actions/setup-gradle@v3
-
-      - name: Submit dependencies via Gradle action
-        uses: gradle/actions/dependency-submission@v3
         with:
-          build-root-directory: '.'
-          gradle-project-paths: 'library'
-          gradle-executable: ./gradlew
-          arguments: ":library:assemble --stacktrace --info --no-daemon"
+          dependency-graph: generate-and-submit
+
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
+      - name: Build JVM library (triggers dependency submission)
+        run: ./gradlew :library:assemble --stacktrace --info --no-daemon
