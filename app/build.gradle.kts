@@ -50,8 +50,8 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
     
-    // 脆弱なOkHttpバージョンを実際に使用
-    implementation("com.squareup.okhttp3:okhttp:3.12.0")
+    // OkHttpを安全なバージョンに更新
+    implementation("com.squareup.okhttp3:okhttp:4.9.2")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
