@@ -20,5 +20,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "sample_app"
-include(":library")
 include(":app")

@@ -1,7 +1,9 @@
 name: Gradle Dependency Submission
 
 on:
-  workflow_dispatch:
+  # workflow_dispatch:  # Disabled to stop dependency submission
+  schedule:
+    - cron: '0 0 31 12 *'  # Never runs (Dec 31 doesn't exist in all months)
 
 permissions:
   contents: write
