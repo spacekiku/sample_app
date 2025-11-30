@@ -49,11 +49,9 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
-    
-    // OkHttpを安全なバージョンに更新
-    implementation("com.squareup.okhttp3:okhttp:4.9.2")
 
-    testImplementation(libs.junit)
+    // OkHttpのバージョンは app/build.gradle.kts で直接管理
+    implementation("com.squareup.okhttp3:okhttp:4.9.2")    testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
