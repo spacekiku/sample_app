@@ -8,10 +8,6 @@ java {
     }
 }
 
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     // Mirror vulnerable deps to surface in Dependency graph
     api("com.squareup.okhttp3:okhttp:3.12.0")
