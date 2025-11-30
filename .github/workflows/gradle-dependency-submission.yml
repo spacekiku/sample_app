@@ -1,9 +1,7 @@
 name: Gradle Dependency Submission
 
 on:
-  # workflow_dispatch:  # Disabled to stop dependency submission
-  schedule:
-    - cron: '0 0 31 12 *'  # Never runs (Dec 31 doesn't exist in all months)
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -24,16 +22,13 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
 
-      - name: Submit library runtimeClasspath only
-        uses: gradle/actions/dependency-submission@v3
-        with:
-          build-root-directory: '.'
-          gradle-project-paths: 'library'
-          gradle-executable: ./gradlew
-          arguments: ":library:dependencies --configuration runtimeClasspath --stacktrace --info --no-daemon"
-
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
-      - name: Resolve dependencies (sanity run)
-        run: ./gradlew :library:dependencies --configuration runtimeClasspath --stacktrace --info --no-daemon
+      - name: Submit app debugRuntimeClasspath
+        uses: gradle/actions/dependency-submission@v3
+        with:
+          build-root-directory: '.'
+          gradle-project-paths: 'app'
+          gradle-executable: ./gradlew
+          arguments: ":app:dependencies --configuration debugRuntimeClasspath --stacktrace --info --no-daemon"
