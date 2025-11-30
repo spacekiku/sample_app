@@ -22,15 +22,7 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
 
-      - name: Submit app debugRuntimeClasspath
-        uses: gradle/actions/dependency-submission@v3
-        with:
-          build-root-directory: '.'
-          gradle-project-paths: 'app'
-          gradle-executable: ./gradlew
-          arguments: ":app:dependencies --configuration debugRuntimeClasspath --stacktrace --info --no-daemon"
-
-      - name: Submit library runtimeClasspath
+      - name: Submit library runtimeClasspath only
         uses: gradle/actions/dependency-submission@v3
         with:
           build-root-directory: '.'
@@ -42,4 +34,4 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Resolve dependencies (sanity run)
-        run: ./gradlew :app:dependencies --configuration debugRuntimeClasspath --stacktrace --info --no-daemon
+        run: ./gradlew :library:dependencies --configuration runtimeClasspath --stacktrace --info --no-daemon
