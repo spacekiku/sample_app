@@ -27,5 +27,5 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
-      - name: Build JVM library (triggers dependency submission)
-        run: ./gradlew :library:assemble --stacktrace --info --no-daemon
+      - name: Resolve runtime dependencies (triggers submission)
+        run: ./gradlew :library:dependencies --configuration runtimeClasspath --stacktrace --info --no-daemon
