@@ -25,10 +25,7 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
-      - name: Submit app debugRuntimeClasspath
+      - name: Submit Dependency Graph
         uses: gradle/actions/dependency-submission@v3
         with:
-          build-root-directory: '.'
-          gradle-project-paths: 'app'
-          gradle-executable: ./gradlew
-          arguments: ":app:dependencies --configuration debugRuntimeClasspath --stacktrace --info --no-daemon"
+          dependency-graph: generate-and-submit
