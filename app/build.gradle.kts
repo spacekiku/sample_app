@@ -53,15 +53,7 @@ dependencies {
     implementation(libs.androidx.compose.material3)
     implementation(libs.okhttp)
     implementation("com.squareup.okhttp3:okhttp:3.12.0")
-    
-    // Force safe versions to override vulnerable transitive dependencies
-    implementation("io.netty:netty-codec-http2:4.1.115.Final")
-    implementation("io.netty:netty-codec-http:4.1.115.Final")
-    implementation("io.netty:netty-handler:4.1.115.Final")
-    implementation("io.netty:netty-common:4.1.115.Final")
-    implementation("org.jdom:jdom2:2.0.6.1")
-    implementation("com.squareup.okio:okio:3.9.1")
-    
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -71,15 +63,3 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 }
 
-configurations.all {
-    resolutionStrategy {
-        force(
-            "io.netty:netty-codec-http2:4.1.115.Final",
-            "io.netty:netty-codec-http:4.1.115.Final",
-            "io.netty:netty-handler:4.1.115.Final",
-            "io.netty:netty-common:4.1.115.Final",
-            "org.jdom:jdom2:2.0.6.1",
-            "com.squareup.okio:okio:3.9.1"
-        )
-    }
-}
