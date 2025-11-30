@@ -39,6 +39,7 @@ android {
     buildFeatures {
         compose = true
     }
+
 }
 
 dependencies {
@@ -68,4 +69,17 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+}
+
+configurations.all {
+    resolutionStrategy {
+        force(
+            "io.netty:netty-codec-http2:4.1.115.Final",
+            "io.netty:netty-codec-http:4.1.115.Final",
+            "io.netty:netty-handler:4.1.115.Final",
+            "io.netty:netty-common:4.1.115.Final",
+            "org.jdom:jdom2:2.0.6.1",
+            "com.squareup.okio:okio:3.9.1"
+        )
+    }
 }
