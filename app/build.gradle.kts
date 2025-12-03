@@ -51,7 +51,8 @@ dependencies {
     implementation(libs.androidx.compose.material3)
 
     // OkHttpのバージョンは app/build.gradle.kts で直接管理
-    implementation("com.squareup.okhttp3:okhttp:4.9.2")
+//    implementation("com.squareup.okhttp3:okhttp:4.9.2")
+    implementation("com.squareup.okhttp3:okhttp:3.12.0")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
